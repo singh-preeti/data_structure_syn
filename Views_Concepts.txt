@@ -1,0 +1,92 @@
+CREATE DATABASE EmployeeDB;
+USE EmployeeDB;
+
+-- Create Gender Table
+CREATE TABLE Gender
+(
+  Id INT PRIMARY KEY,
+  Name VARCHAR(50)
+);
+
+-- Populate the Gender Table with test data
+INSERT INTO Gender VALUES(1, 'Male');
+INSERT INTO Gender VALUES(2, 'Female');
+INSERT INTO Gender VALUES(3, 'Unknown');
+
+-- Create Employee Table
+CREATE TABLE Employee
+(
+  Id INT PRIMARY KEY,
+  Name VARCHAR(50),
+  GenderId VARCHAR(50),
+  Salary INT,
+  Department VARCHAR(50)
+);
+
+-- Populate the Employee Table with test data
+INSERT INTO Employee VALUES(1, 'Pranaya', 1, 20000, 'IT');
+INSERT INTO Employee VALUES(2, 'Priyanka', 2, 30000, 'HR');
+INSERT INTO Employee VALUES(3, 'Anurag', 1, 40000, 'IT');
+INSERT INTO Employee VALUES(4, 'Preety', 2, 25000, 'HR');
+INSERT INTO Employee VALUES(5, 'Sambit', 3, 35000, 'INFRA');
+INSERT INTO Employee VALUES(6, 'Hina', 2, 45000, 'HR');
+
+
+
+CREATE VIEW vwEmployee AS SELECT * FROM Employee;
+
+SELECT * FROM vwEmployee;
+
+INSERT INTO vwEmployee VALUES(7, "Smith", 1, 42000, "IT");
+
+SELECT * FROM Employee;
+
+UPDATE vwEmployee SET Name = "Taylor", Salary = 50000 WHERE Id = 7;
+
+SELECT * FROM Employee;
+
+DELETE FROM vwEmployee where ID = 7;
+
+SELECT * FROM Employee;
+
+
+--------------------------Create a new View--------------------------
+
+CREATE VIEW vwEmployee1 
+AS 
+SELECT Id, Name, GenderId, Department 
+FROM Employee;
+
+
+DROP VIEW vwEmployee;
+
+
+ALTER VIEW vwEmployee1 
+AS    
+SELECT Id, Name, Department 
+FROM Employee;  
+
+
+-------------------------MySQL Complex View Example:-------------------------------
+CREATE VIEW vwEmployees
+AS 
+SELECT emp.Id, emp.Name, emp.Salary, gen.Name AS Gender
+FROM Employee emp
+INNER JOIN Gender gen
+on emp.GenderId = gen.ID;
+
+
+CREATE VIEW vwCountEmployees
+AS 
+SELECT Department, Count(*) as TotalEmployee
+FROM Employee Group BY Department;
+
+
+-----------------------------we create a view based on other views--------------------
+CREATE VIEW vwSalaryDetails 
+AS
+SELECT Name, Salary
+FROM vwEmployees;
+
+------------------------Can we drop a table that has dependent views on it in MySQL?-----------
+Yes, it is possible in MySQL to drop a table even if any dependent views are associated with it, but the views that are associated with it will not be dropped. They still execute in the database only with the status as inactive object and all those views become active and start functioning provided the table is recreated.

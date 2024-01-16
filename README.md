@@ -10,3 +10,5 @@ https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/?re
 
 ----------------------------binary Tree--------------------------------------
 https://www.geeksforgeeks.org/introduction-to-binary-tree-data-structure-and-algorithm-tutorials/?ref=lbp
+----------------------------Views------------------------------------------
+https://data-flair.training/blogs/sql-view/

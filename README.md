@@ -14,3 +14,5 @@ https://www.geeksforgeeks.org/introduction-to-binary-tree-data-structure-and-alg
 https://data-flair.training/blogs/sql-view/
 ----------------------------Stored Procedures-------------------------------
 https://www.digitalocean.com/community/tutorials/how-to-use-stored-procedures-in-mysql
+--------------------------Normalization---------------------------------------
+https://popsql.com/blog/normalization-in-sql
